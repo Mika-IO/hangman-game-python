@@ -1,0 +1,42 @@
+palavras = {
+        'Frutas' : ['Banana',
+                    'Melancia',
+                    'Abacate',
+                    'Limão',
+                    'Morango',
+                    'Mamão',
+                    'Goiaba',
+                    'Jabuticaba',
+                    'manga',
+                    'Carambola',
+                    'Uva',
+                    'Cajá'],
+      
+        'Veículo' : ['Carro',
+                     'Bicicleta',
+                     'Motocicleta',
+                     'Quadriciculo',
+                     'Caminhão',
+                     'Avião',
+                     'Elevador'],
+       
+        'Móvel' : ['Cama',
+                   'Sofá',
+                   'Cadeira',
+                   'Mesa',
+                   'Fogão',
+                   'Geladeira',
+                   'Guarda-Roupa',
+                   'Armário'],
+        
+        'Console' : ['Play-Station',
+                     'Xbox',
+                     'Nintendo'],
+
+        'Eletrônicos' : ['Televisão',
+                         'DVD',
+                         'Computador',
+                         'Telefone',
+                         'SmartPhone',
+                         'Tablet']
+    }
