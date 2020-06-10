@@ -7,4 +7,6 @@
 ![inicio](https://github.com/Mika-IO/jogo-da-forca/blob/master/1.png)
 
 ## No diretório do jogo digite no terminal:
+'''
     python main.py
+'''
