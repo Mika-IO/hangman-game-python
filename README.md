@@ -1,12 +1,17 @@
-<center>![inicio](https://github.com/Mika-IO/jogo-da-forca/blob/master/1.png)</center>
+<div style="text-align:center"><img src="..." />
 
-<center>## JOGO DA FORCA EM PYTHON PURO</center>
+![inicio](https://github.com/Mika-IO/jogo-da-forca/blob/master/1.png)
 
-<center>![enforcado](https://github.com/Mika-IO/jogo-da-forca/blob/master/3.png)</center>
+## JOGO DA FORCA EM PYTHON PURO 
 
-<center>### A única dependência é python... Execute o jogo com:</center>
+![enforcado](https://github.com/Mika-IO/jogo-da-forca/blob/master/3.png)
 
-<center>*python main.py*</center>
+## A única dependência é python... Execute o jogo com:
 
+*python main.py*
 
-<center>### ***HAVE A FUN AND ENJOY!!!***</center>
+### ***HAVE A FUN AND ENJOY!!!***
+![inicio](https://github.com/Mika-IO/jogo-da-forca/blob/master/1.png)
+
+</div>
+
