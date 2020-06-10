@@ -1,5 +1,3 @@
-<div style="text-align:center"><img src="..." />
-
 ![inicio](https://github.com/Mika-IO/jogo-da-forca/blob/master/1.png)
 
 ## JOGO DA FORCA EM PYTHON PURO 
@@ -12,6 +10,3 @@
 
 ### ***HAVE A FUN AND ENJOY!!!***
 ![inicio](https://github.com/Mika-IO/jogo-da-forca/blob/master/1.png)
-
-</div>
-
