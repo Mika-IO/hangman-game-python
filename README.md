@@ -1,6 +1,6 @@
 ![inicio](https://github.com/Mika-IO/jogo-da-forca/blob/master/1.png) 
 
-## JOGO DA FORCA EM PYTHON PURO {style=text-align:center}
+## JOGO DA FORCA EM PYTHON PURO 
 
 ![enforcado](https://github.com/Mika-IO/jogo-da-forca/blob/master/3.png) 
 
