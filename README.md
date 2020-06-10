@@ -1,13 +1,13 @@
-![inicio](https://github.com/Mika-IO/jogo-da-forca/blob/master/1.png) 
+<center> ![inicio](https://github.com/Mika-IO/jogo-da-forca/blob/master/1.png)  <center/>
 
-## JOGO DA FORCA EM PYTHON PURO 
+<center> ## JOGO DA FORCA EM PYTHON PURO <center/>
 
-![enforcado](https://github.com/Mika-IO/jogo-da-forca/blob/master/3.png) 
+<center> ![enforcado](https://github.com/Mika-IO/jogo-da-forca/blob/master/3.png)  <center/>
 
-### A única dependência é python... Execute o jogo com:
+<center> ### A única dependência é python... Execute o jogo com:  <center/>
 
-*python main.py*  
+<center> *python main.py*   <center/>
 
 
 
-### ***HAVE A FUN AND ENJOY!!!*** 
+<center> ### ***HAVE A FUN AND ENJOY!!!***  <center/>
