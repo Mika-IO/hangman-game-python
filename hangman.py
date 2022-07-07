@@ -1,3 +1,4 @@
+from tracemalloc import start
 from art import corpo
 from random import randint
 from words import words
@@ -20,39 +21,75 @@ def clean_screen():
         os.system("cls")
 
 
-def sortear_palavra_e_categoria(words):
-    categoria = list(words.keys())[randint(0, len(list(words.keys())) - 1)]
-    palavra = words[categoria][randint(0, len(words[categoria]) - 1)]
-    return categoria, palavra
+def sort_word(words):
+    category = list(words.keys())[randint(0, len(list(words.keys())) - 1)]
+    word = words[category][randint(0, len(words[category]) - 1)]
+    return category, word
 
 
-def run():
-    start_message = """
+def defeat_message():
+    message = """
+    |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+    |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+    |||||||||||||||||||||||||||||                            ||||||||||||||||||||||||||||||||
+    |||||||||||||||||||||||||||||         ENFORCOU :<<       ||||||||||||||||||||||||||||||||
+    |||||||||||||||||||||||||||||                            ||||||||||||||||||||||||||||||||
+    |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+    |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+    """
+    print(message)
+
+
+def start_message():
+    message = """
     ###########################################################
     ############### HANGMAN GAME | JOGO DA FORCA ##############
     ###########################################################
     """
+    print(message)
 
+
+def victory_message(word):
+    message = f"""
+    🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆
+    🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆
+    
+    PARABÉNS ACERTOU!!! VOCÊ VENCEU!!!     
+        A PALAVRA É {word.upper()}!!
+        
+    🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆
+    🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆
+    """
+    print(message)
+
+
+def get_files():
     try:
-        file_score = open("score.txt", "r")
-        file_defeats = open("defeat.txt", "r")
+        score_file = open("score.txt", "r")
+        defeats_files = open("defeat.txt", "r")
     except:
-        file_score = open("score.txt", "w")
-        file_score.write("0")
-        file_score = open("score.txt", "r")
-        file_defeats = open("defeat.txt", "w")
-        file_defeats.write("0")
-        file_defeats = open("defeat.txt", "r")
+        score_file = open("score.txt", "w")
+        score_file.write("0")
+        score_file = open("score.txt", "r")
+        defeats_files = open("defeat.txt", "w")
+        defeats_files.write("0")
+        defeats_files = open("defeat.txt", "r")
 
-    score = int(file_score.read())
-    defeats = int(file_defeats.read())
+    return score_file, defeats_files
+
+
+def run():
+    score_file, defeats_files = get_files()
+
+    score = int(score_file.read())
+    defeats = int(defeats_files.read())
 
     continuar = True
     while continuar:
         # SORTEAR PALAVRA
-        categoria_e_palavra = sortear_palavra_e_categoria(words)
-        categoria = categoria_e_palavra[0]
-        palavra = categoria_e_palavra[1]
+        category_e_palavra = sort_word(words)
+        category = category_e_palavra[0]
+        palavra = category_e_palavra[1]
 
         # CRIA UMA LISTA DO TAMANHO DA PAVRA COM '_' A PREENCHENDO
         letras_acertadas = ["_" for i in range(len(palavra))]
@@ -64,17 +101,13 @@ def run():
 
         while not acertou and not enforcou:
             clean_screen()
+            start_message()
 
-            print(start_message)
-
-            print(
-                f""" 
-            VITÓRIA:     {score}
-            DERROTAS:    {defeats}
-
-            CATEGORIA: {categoria}
-                """
-            )
+            print("=========================")
+            print(f"VITÓRIA:     {score}")
+            print(f"DERROTAS:    {defeats}")
+            print(f"CATEGORY:    {category}")
+            print("=========================")
 
             print(corpo[erros])
             print(letras_acertadas)
@@ -95,27 +128,14 @@ def run():
 
             # QND O JOGADOR ERRAR 7 VEZES ELE ENhangman
             if erros == 6:
-
-                print(
-                    """
-
-            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-            |||||||||||||||||||||||||||||                            ||||||||||||||||||||||||||||||||
-            |||||||||||||||||||||||||||||         ENFORCOU!!!        ||||||||||||||||||||||||||||||||
-            |||||||||||||||||||||||||||||                            ||||||||||||||||||||||||||||||||
-            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-                
-                """
-                )
+                defeat_message()
 
                 print(corpo[6])
                 print("CONTINUE A NADAR! CONTINUE A NADAR!")
 
                 defeats += 1
-                file_defeats = open("defeats.txt", "w")
-                file_defeats.write(str(defeats))
+                defeats_files = open("defeats.txt", "w")
+                defeats_files.write(str(defeats))
 
                 continuar = (
                     True if (input("Quer continuar? ")[0].upper() == "S") else False
@@ -125,29 +145,17 @@ def run():
             # QND O JOGADOR ACERTAR PARA O LOOP E IMPRIME UMA MSG
             if list(palavra) == letras_acertadas:
                 clean_screen()
-                print(start_message)
+                start_message()
+
                 print(corpo[erros])
                 print(letras_acertadas)
-                print(
-                    f"""
-    . _______ .  #####################################
-    ._==_==_=_.  #####################################
-    .-\\:/-.
-    | (|:.|) |     PARABÉNS ACERTOU!!! você ganhou!!!     
-    '-|:.|-'         A PALAVRA É {palavra.upper()}
-    \\:: //    
-    '::.::'    #####################################
-        ) (      #####################################
-    _.' '._
-    '-------'
 
-                    """
-                )
+                victory_message(palavra)
 
                 # INCREMENTA O SCORE E ADICIONA NO file
                 score += 1
-                file_score = open("score.txt", "w")
-                file_score.write(str(score))
+                score_file = open("score.txt", "w")
+                score_file.write(str(score))
 
                 continuar = (
                     True if (input("Quer continuar? ")[0].upper() == "S") else False
@@ -155,5 +163,5 @@ def run():
                 break
             jogadas += 1
 
-    file_score.close()
-    file_defeats.close()
+    score_file.close()
+    defeats_files.close()
